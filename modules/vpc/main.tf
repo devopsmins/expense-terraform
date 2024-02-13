@@ -10,3 +10,4 @@ resource "aws_subnet" "public" {
   tags              = merge(var.tags, { Name = "public-subnet" })
   availability_zone = var.azs[count.index]
 }
+
