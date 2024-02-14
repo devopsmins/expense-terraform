@@ -49,3 +49,4 @@ resource "aws_db_instance" "main" {
   #kms_key_id             = var.kms
  # storage_encrypted      = true
 }
+
