@@ -27,3 +27,5 @@ backend = {
   instance_count = 1
   instance_type  = "t3.small"
 }
+
+bastion_cidrs    = ["172.31.37.78/32"]
