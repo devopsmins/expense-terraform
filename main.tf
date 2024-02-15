@@ -40,7 +40,7 @@ module "backend" {
   subnets          = module.vpc.app_subnets
   tags             = var.tags
   vpc_id           = module.vpc.vpc_id
-  #bastion_cidrs    = var.bastion_cidrs
+  bastion_cidrs    = var.bastion_cidrs
   #kms              = var.kms
   #prometheus_cidrs = var.prometheus_cidrs
 }

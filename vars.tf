@@ -16,7 +16,7 @@ variable "rds_engine_version" {}
 variable "rds_instance_class" {}
 #variable "kms" {}
 variable "backend" {}
-#variable "bastion_cidrs" {}
+variable "bastion_cidrs" {}
 #variable "frontend" {}
 #variable "public_alb" {}
 #variable "backend_alb" {}
