@@ -47,6 +47,6 @@ resource "aws_db_instance" "main" {
   tags                   = merge(var.tags, { Name = "${var.env}-mysql-rds" })
   db_subnet_group_name   = aws_db_subnet_group.main.name
   #kms_key_id             = var.kms
- # storage_encrypted      = true
+  storage_encrypted      = true
 }
 
