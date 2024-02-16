@@ -98,12 +98,14 @@ resource "aws_iam_role" "main" {
             "ssm:GetParameter"
           ],
           "Resource" : [
-            "arn:aws:ssm:us-east-1:633788536644:parameter/${var.env}.${var.component}.*",
-            "arn:aws:ssm:us-east-1:633788536644:parameter/newrelic.licence_key",
-            "arn:aws:ssm:us-east-1:633788536644:parameter/${var.env}.rds.*",
-            "arn:aws:ssm:us-east-1:633788536644:parameter/grafana.api_key",
-            "arn:aws:ssm:us-east-1:633788536644:parameter/jenkins.*",
-            "arn:aws:ssm:us-east-1:633788536644:parameter/artifactory.*"
+            "arn:aws:ssm:us-east-1:827956817277:parameter/${var.env}.${var.component}.*",
+            #"arn:aws:ssm:us-east-1:633788536644:parameter/newrelic.licence_key",
+            "arn:aws:ssm:us-east-1:827956817277:parameter/newrelic.licence_key",
+            "arn:aws:ssm:us-east-1:827956817277:parameter/${var.env}.rds.*",
+            #"arn:aws:ssm:us-east-1:633788536644:parameter/grafana.api_key",
+            "arn:aws:ssm:us-east-1:827956817277:parameter/grafana_api_key",
+            "arn:aws:ssm:us-east-1:827956817277:parameter/jenkins.*",
+            "arn:aws:ssm:us-east-1:827956817277:parameter/artifactory.*"
           ]
         },
         {
@@ -111,6 +113,21 @@ resource "aws_iam_role" "main" {
           "Effect" : "Allow",
           "Action" : "ssm:DescribeParameters",
           "Resource" : "*"
+        },
+        {
+          "Sid": "S3UploadForPrometheusAlerts",
+          "Effect": "Allow",
+          "Action": [
+            "s3:GetObject",
+            "s3:ListBucket",
+            "s3:PutObject",
+            "s3:DeleteObjectVersion",
+            "s3:DeleteObject"
+          ],
+          "Resource": [
+            "arn:aws:s3:::min-prometheus-alert-rule/*",
+            "arn:aws:s3:::min-prometheus-alert-rule"
+          ]
         }
       ]
     })
