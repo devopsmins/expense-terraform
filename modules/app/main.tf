@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "main" {
   max_size            = var.instance_count + 5
   min_size            = var.instance_count
   vpc_zone_identifier = var.subnets
-  #target_group_arns   = [aws_lb_target_group.main.arn]
+  target_group_arns   = [aws_lb_target_group.main.arn]
 
   launch_template {
     id      = aws_launch_template.main.id
@@ -64,6 +64,23 @@ resource "aws_autoscaling_group" "main" {
   }
 }
 
+resource "aws_lb_target_group" "main" {
+  name                 = "${var.env}-${var.component}"
+  port                 = var.app_port
+  protocol             = "HTTP"
+  vpc_id               = var.vpc_id
+  #deregistration_delay = 10
+
+  health_check {
+    enabled             = true
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    interval            = 5
+    matcher             = 200
+    path                = "/health"
+    timeout             = 2
+  }
+}
 
 resource "aws_iam_role" "main" {
   name = "${var.env}-${var.component}"
