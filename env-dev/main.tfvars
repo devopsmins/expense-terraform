@@ -34,10 +34,5 @@ frontend = {
 }
 bastion_cidrs    = ["172.31.46.160/32"]
 
-public_alb = {
-  internal     = false
-  lb_port      = 80
-  type         = "public"
 
-}
 

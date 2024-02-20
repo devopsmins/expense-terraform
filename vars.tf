@@ -18,7 +18,7 @@ variable "rds_instance_class" {}
 variable "backend" {}
 variable "bastion_cidrs" {}
 variable "frontend" {}
-variable "public_alb" {}
+#variable "public_alb" {}
 #variable "backend_alb" {}
 #variable "route53_zone_id" {}
 #variable "certificate_arn" {}
