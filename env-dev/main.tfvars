@@ -41,9 +41,3 @@ public_alb = {
 
 }
 
-backend_alb = {
-  internal     = false
-  lb_port      = 80
-  type         = "backend"
-
-}

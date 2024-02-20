@@ -80,20 +80,3 @@ module "public-alb" {
   #dns_name         = var.env == "prod" ? "www" : null
 }
 
-module "backend-alb" {
-  source           = "./modules/alb"
-  env              = var.env
-  internal         = var.backend_alb["internal"]
-  lb_port          = var.backend_alb["lb_port"]
-  sg_cidrs         = var.web_subnets
-  subnets          = module.vpc.app_subnets
-  tags             = var.tags
-  target_group_arn = module.backend.target_group_arn
-  type             = var.backend_alb["type"]
-  vpc_id           = module.vpc.vpc_id
-  component        = var.backend_alb["component"]
-  #route53_zone_id  = var.route53_zone_id
-  enable_https     = var.backend_alb["enable_https"]
-  #certificate_arn  = var.certificate_arn
- # ingress          = var.backend_alb["ingress"]
-}
