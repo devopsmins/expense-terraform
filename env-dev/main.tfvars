@@ -38,7 +38,12 @@ public_alb = {
   internal     = false
   lb_port      = 80
   type         = "public"
-
+  component    = "frontend"
+  enable_https = true
+  ingress = {
+    http  = { port = 80 }
+    https = { port = 443 }
+  }
 }
 
 route53_zone_id = "Z0021413JFIQEJP9ZO9Z"
