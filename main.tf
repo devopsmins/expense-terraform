@@ -72,9 +72,9 @@ module "public-alb" {
   target_group_arn = module.frontend.target_group_arn
   type             = var.public_alb["type"]
   vpc_id           = module.vpc.vpc_id
-  #component        = var.public_alb["component"]
+  component        = var.public_alb["component"]
   route53_zone_id  = var.route53_zone_id
-  #enable_https     = var.public_alb["enable_https"]
+  enable_https     = var.public_alb["enable_https"]
   certificate_arn  = var.certificate_arn
   ingress          = var.public_alb["ingress"]
 }

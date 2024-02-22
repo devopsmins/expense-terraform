@@ -47,5 +47,5 @@ public_alb = {
 }
 
 route53_zone_id = "Z0021413JFIQEJP9ZO9Z"
-kms             = "arn:aws:kms:us-east-1:633788536644:key/36a1180a-d43b-4561-ab19-dc55e634b8fb"
+#kms             = "arn:aws:kms:us-east-1:633788536644:key/36a1180a-d43b-4561-ab19-dc55e634b8fb"
 certificate_arn = "arn:aws:acm:us-east-1:633788536644:certificate/f48fadb0-e24c-4370-90e8-d3718672a46e"
