@@ -19,7 +19,7 @@ variable "backend" {}
 variable "bastion_cidrs" {}
 variable "frontend" {}
 variable "public_alb" {}
-#variable "backend_alb" {}
+variable "backend_alb" {}
 variable "route53_zone_id" {}
 variable "certificate_arn" {}
 #variable "prometheus_cidrs" {}
