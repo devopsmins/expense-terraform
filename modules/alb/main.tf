@@ -41,3 +41,12 @@ resource "aws_lb_listener" "main" {
     target_group_arn = var.target_group_arn
   }
 }
+
+
+resource "aws_route53_record" "main" {
+  name    = var.dns_name == null ? "${var.component}-${var.env}" : var.dns_name
+  type    = "CNAME"
+  zone_id = var.route53_zone_id
+  ttl     = 30
+  records = [aws_lb.main.dns_name]
+}
