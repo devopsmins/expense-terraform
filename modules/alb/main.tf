@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "https"{
 
   from_port         = 443
   protocol          = "tcp"
-  security_group_id = "aws_security_group_main.id"
+  security_group_id = "aws_security_group.main.id"
   to_port           = 443
   type              = "ingress"
   cidr_blocks       = var.sg_cidrs
