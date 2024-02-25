@@ -22,6 +22,15 @@ resource "aws_security_group" "main" {
 
   tags = merge(var.tags, { Name = "${var.env}-${var.component}" })
 }
+resource "aws_security_group_rule" "https"{
+
+  from_port         = 443
+  protocol          = "tcp"
+  security_group_id = "aws_security_group_main.id"
+  to_port           = 443
+  type              = "ingress"
+  cidr_blocks       = var.sg_cidrs
+}
 resource "aws_lb" "main" {
   name               = "${var.env}-${var.type}"
   internal           = var.internal
