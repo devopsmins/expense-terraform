@@ -3,14 +3,16 @@ resource "aws_security_group" "main" {
   description = "${var.env}-${var.type}-alb"
   vpc_id      = var.vpc_id
 
-  ingress {
-    description = "APP"
-    from_port   = var.lb_port
-    to_port     = var.lb_port
-    protocol    = "tcp"
-    cidr_blocks = var.sg_cidrs
+  dynamic "ingress" {
+    for_each = var.ingress
+    content {
+      description = "APP"
+      from_port   = ingress.value["port"]
+      to_port     = ingress.value["port"]
+      protocol    = "tcp"
+      cidr_blocks = var.sg_cidrs
+    }
   }
-
 
   egress {
     from_port        = 0
@@ -22,15 +24,15 @@ resource "aws_security_group" "main" {
 
   tags = merge(var.tags, { Name = "${var.env}-${var.component}" })
 }
-resource "aws_security_group_rule" "https"{
+#resource "aws_security_group_rule" "https"{
 
-  from_port         = 443
-  protocol          = "tcp"
-  security_group_id = aws_security_group.main.id
-  to_port           = 443
-  type              = "ingress"
-  cidr_blocks       = var.sg_cidrs
-}
+ # from_port         = 443
+  #protocol          = "tcp"
+  #security_group_id = aws_security_group.main.id
+  #to_port           = 443
+  #type              = "ingress"
+  #cidr_blocks       = var.sg_cidrs
+#}
 resource "aws_lb" "main" {
   name               = "${var.env}-${var.type}"
   internal           = var.internal
