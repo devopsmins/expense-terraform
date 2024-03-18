@@ -56,3 +56,7 @@ backend_alb = {
     http = { port = 80 }
   }
 }
+
+route53_zone_id = "Z05815251WQO0OK50UPQR"
+kms             = "arn:aws:kms:us-east-1:827956817277:key/42af000f-94d6-4913-a952-14877c37a92e"
+certificate_arn = "arn:aws:acm:us-east-1:827956817277:certificate/3841c970-14da-4ec8-84d4-4f62d433c424"
