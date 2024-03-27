@@ -33,6 +33,7 @@ frontend = {
   instance_type  = "t3.small"
 }
 bastion_cidrs    = ["172.31.46.160/32"]
+prometheus_cidrs = ["172.31.46.200/32"]
 
 public_alb = {
   internal     = false

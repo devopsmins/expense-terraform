@@ -22,7 +22,7 @@ variable "public_alb" {}
 variable "backend_alb" {}
 variable "route53_zone_id" {}
 variable "certificate_arn" {}
-#variable "prometheus_cidrs" {}
+variable "prometheus_cidrs" {}
 
 
 
