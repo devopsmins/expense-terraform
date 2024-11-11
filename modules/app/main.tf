@@ -47,6 +47,7 @@ resource "aws_launch_template" "main" {
   user_data = base64encode(templatefile("${path.module}/userdata.sh", {
     role_name = var.component
     env       = var.env
+
   }))
   iam_instance_profile {
     name = aws_iam_instance_profile.main.name
@@ -126,7 +127,6 @@ resource "aws_iam_role" "main" {
   })
   inline_policy {
     name = "SSM-Read-Access"
-
     policy = jsonencode({
       "Version" : "2012-10-17",
       "Statement" : [
@@ -174,7 +174,6 @@ resource "aws_iam_role" "main" {
       ]
     })
   }
-
 }
 
 resource "aws_iam_instance_profile" "main" {
